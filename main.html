@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+    button {
+      width: 100px;
+      height: 50px;
+    }
+  </style>
+	<title>10000 Knoppen</title>
+	<head>
+	  <title>Mijn Website</title>
+	  <script>
+	    if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+	      window.location.href = "js-error.html";
+	    }
+	    else {
+	      document.documentElement.className += " js";
+	    }
+	  </script>
+	</head>
+	<script>
+		function handleButtonClick(buttonNumber) {
+			if (buttonNumber === 6) {
+				alert("Dit is de 6e knop!");
+			} else {
+				alert("Dit is de verkeerde knop!");
+			}
+		}
+
+		document.addEventListener("DOMContentLoaded", function() {
+			for (var i = 1; i <= 10000; i++) {
+				var button = document.createElement("button");
+				button.textContent = "Knop " + i;
+				button.onclick = (function(buttonNumber) {
+					return function() {
+						handleButtonClick(buttonNumber);
+					};
+				})(i);
+				document.body.appendChild(button);
+			}
+		});
+	</script>
+	<script>
+  document.addEventListener('contextmenu', event => event.preventDefault());
+</script>
+</head>
+<body>
+</body>
+</html>
